@@ -1,3 +1,6 @@
+arch:
+  - amd64
+  - ppc64le
 sudo: required
 dist: trusty
 
@@ -29,16 +32,8 @@ env:
     - TEST_NGINX_SLEEP=0.006
 matrix:
     - NGINX_VERSION=1.9.15
-      arch: amd64
     - NGINX_VERSION=1.19.3
-      arch: ppc64le
-
-
-before_install:
-    - |
-     if [[ "$TRAVIS_CPU_ARCH" = "ppc64le" ]]; then
-      sudo apt-get install memcached  
-     fi
+      
 install:
   - if [ ! -d download-cache ]; then mkdir download-cache; fi
   - if [ ! -f download-cache/openssl-$OPENSSL_VER.tar.gz ]; then wget -O download-cache/openssl-$OPENSSL_VER.tar.gz https://www.openssl.org/source/openssl-$OPENSSL_VER.tar.gz; fi
