@@ -11,6 +11,7 @@ language: c
 compiler:
   - gcc
   - clang
+
 cache:
   directories:
   - download-cache
@@ -30,10 +31,10 @@ env:
     - OPENSSL_VER=1.0.2s
     - LD_LIBRARY_PATH=$LUAJIT_LIB:$LD_LIBRARY_PATH
     - TEST_NGINX_SLEEP=0.006
-matrix:
+  matrix:
     - NGINX_VERSION=1.9.15
     - NGINX_VERSION=1.19.3
-      
+
 install:
   - if [ ! -d download-cache ]; then mkdir download-cache; fi
   - if [ ! -f download-cache/openssl-$OPENSSL_VER.tar.gz ]; then wget -O download-cache/openssl-$OPENSSL_VER.tar.gz https://www.openssl.org/source/openssl-$OPENSSL_VER.tar.gz; fi
