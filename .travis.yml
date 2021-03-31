@@ -1,7 +1,7 @@
 arch:
   - amd64
   - ppc64le
-sudo: required
+#sudo: required
 dist: trusty
 
 os: linux
